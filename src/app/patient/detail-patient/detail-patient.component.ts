@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
-import { PATIENTS } from '../mock-patient';
 import { Patient } from '../patient';
+import { PatientService } from '../patient.service';
 
 @Component({
   selector: 'app-detail-patient',
@@ -12,13 +12,18 @@ export class DetailPatientComponent implements OnInit {
   patientList : Patient[];
   patient : Patient|undefined;
 
-  constructor(private route:ActivatedRoute, private router: Router) { }
+  constructor(
+    private route:ActivatedRoute, 
+    private router: Router,
+    private patientService : PatientService
+    ) { }
 
   ngOnInit() {
-    this.patientList = PATIENTS;
     const patientId: string|null = this.route.snapshot.paramMap.get('id');
+    
     if(patientId){
-    this.patient = this.patientList.find(patient => patient.id == +patientId);
+        this.patientService.getPatientById(+patientId)
+        .subscribe(patient => this.patient = patient);
     }
   }
 

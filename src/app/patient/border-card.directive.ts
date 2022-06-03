@@ -8,11 +8,10 @@ export class BorderCardDirective {
 
   private initialColor: string = '#f5f5f5';
   private defaultColor : string = '#009688';
-  private defaultHeight : number = 210;
+  private defaultHeight : number = 120;
 
   constructor(private el: ElementRef) { 
     this.setColorBorder(this.initialColor);
-    this.setHeight(this.defaultHeight);
   }
 
   @Input('patientBorderCard') borderColor: string; 

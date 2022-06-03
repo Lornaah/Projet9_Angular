@@ -8,19 +8,19 @@
             <tbody>
                 <tr>
                     <td>First Name</td>
-                    <td><strong>{{ patient.firstName }}</strong></td>
+                    <td><strong>{{ patient.given }}</strong></td>
                   </tr>
               <tr>
                 <td>Last Name</td>
-                <td><strong>{{ patient.lastName }}</strong></td>
+                <td><strong>{{ patient.family }}</strong></td>
               </tr>
               <tr>
                 <td>BirthDate</td>
-                <td><em>{{ patient.birthDate| date:"dd/MM/yyyy" }}</em></td>
+                <td><em>{{ patient.dob| date:"dd/MM/yyyy" }}</em></td>
               </tr>
               <tr>
                 <td>Gender</td>
-                <td><strong>{{ patient.gender }}</strong></td>
+                <td><strong>{{ patient.sex }}</strong></td>
               </tr>
               <tr>
                 <td>Address</td>
@@ -28,7 +28,7 @@
               </tr>
               <tr>
                 <td>Phone Number</td>
-                <td><strong>{{ patient.phoneNumber }}</strong></td>
+                <td><strong>{{ patient.phone }}</strong></td>
               </tr>
               
               

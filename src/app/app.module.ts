@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BorderCardDirective } from './border-card.directive';
-import { ListPatientComponent } from './list-patient/list-patient.component';
-import { DetailPatientComponent } from './detail-patient/detail-patient.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PatientModule } from './patient/patient.module';
 
 @NgModule({
-  imports: [BrowserModule, AppRoutingModule],
-  declarations: [AppComponent, BorderCardDirective, ListPatientComponent, DetailPatientComponent],
-  
+  declarations: [
+    AppComponent,
+    PageNotFoundComponent
+  ],
+
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    PatientModule,
+    AppRoutingModule
+  ],
+ 
   providers: [],
   bootstrap: [AppComponent]
 })

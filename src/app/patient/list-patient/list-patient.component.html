@@ -1,0 +1,16 @@
+<h2 class="center">Patient List</h2>
+<div class="container">
+    <div class="row">
+
+        <div *ngFor="let patient of patientList" class="col m4 s6">
+            <div (click)="goToPatient(patient)"  patientBorderCard class="card-panel center-align" style="margin-bottom:30px">
+                        <h5>  
+                             First Name : {{ patient.given }} <br/>
+                             Last Name : {{ patient.family}}
+                        </h5>
+         
+            </div>
+           
+        </div>
+    </div>
+</div>
