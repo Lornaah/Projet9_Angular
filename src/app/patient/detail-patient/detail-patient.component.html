@@ -1,15 +1,15 @@
 <div *ngIf="patient" class="row">
-    <div class="col s12 m8 offset-m2">
+  <div class="col s12 m8 offset-m2">
     <h2 class="header center"> Patient informations </h2>
     <div class="card horizontal hoverable">
       <div class="card-stacked">
         <div class="card-content">
           <table class="bordered striped">
             <tbody>
-                <tr>
-                    <td>First Name</td>
-                    <td><strong>{{ patient.given }}</strong></td>
-                  </tr>
+              <tr>
+                <td>First Name</td>
+                <td><strong>{{ patient.given }}</strong></td>
+              </tr>
               <tr>
                 <td>Last Name</td>
                 <td><strong>{{ patient.family }}</strong></td>
@@ -30,16 +30,18 @@
                 <td>Phone Number</td>
                 <td><strong>{{ patient.phone }}</strong></td>
               </tr>
-              
-              
+
             </tbody>
           </table>
         </div>
         <div class="card-action">
-          <a (click)="goToPatientList()">Retour</a>
+          <a (click)="goToPatientList()">Back</a>
+          <a (click)="goToEditPatient(patient)">Edit</a>
+          <a (click)="deletePatient(patient)">Delete</a> 
         </div>
+
       </div>
     </div>
-    </div>
+  </div>
 </div>
 <h4 *ngIf='!patient' class="center">There is no patient here !</h4>

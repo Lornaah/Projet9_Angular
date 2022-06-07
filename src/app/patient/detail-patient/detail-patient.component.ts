@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from '../patient';
 import { PatientService } from '../patient.service';
 
@@ -9,26 +9,33 @@ import { PatientService } from '../patient.service';
 })
 export class DetailPatientComponent implements OnInit {
 
-  patientList : Patient[];
-  patient : Patient|undefined;
+  patientList: Patient[];
+  patient: Patient | undefined;
 
   constructor(
-    private route:ActivatedRoute, 
+    private route: ActivatedRoute,
     private router: Router,
-    private patientService : PatientService
-    ) { }
+    private patientService: PatientService
+  ) { }
 
   ngOnInit() {
-    const patientId: string|null = this.route.snapshot.paramMap.get('id');
-    
-    if(patientId){
-        this.patientService.getPatientById(+patientId)
+    const patientId: string | null = this.route.snapshot.paramMap.get('id');
+
+    if (patientId) {
+      this.patientService.getPatientById(+patientId)
         .subscribe(patient => this.patient = patient);
     }
   }
+  deletePatient(patient : Patient){
+    this.patientService.deletePatientById(patient.id).subscribe(() => this.goToPatientList());
+  }
 
-  goToPatientList(){
+  goToPatientList() {
     this.router.navigate(['/patients']);
   }
-  
+
+  goToEditPatient(patient: Patient) {
+    this.router.navigate(['edit/patient', patient.id]);
+  }
+
 }
