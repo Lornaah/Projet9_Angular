@@ -9,12 +9,12 @@ export class Patient {
     phone: string;
 
     constructor(
-        family: string = 'Enter a lastname',
-        given: string = 'Enter a firstname',
+        family: string = '',
+        given: string = '',
         dob: Date = new Date(),
-        sex: string = 'Enter a gender',
-        address: string = 'Enter an address',
-        phone: string = 'Enter a phone number',
+        sex: string = '',
+        address: string = '',
+        phone: string = '',
 
 
     ) {

@@ -55,7 +55,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/app/patient/patient-form/patient-form.component.js"
+            ]
           },
           "configurations": {
             "production": {

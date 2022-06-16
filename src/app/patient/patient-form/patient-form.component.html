@@ -1,33 +1,31 @@
-<form *ngIf="patient" (ngSubmit)="onSubmit()" #patientForm="ngForm">
-  <div class="row">
-    <div class="col s8 offset-s2">
-      <div class="card-panel">
 
+<form *ngIf="patient"  #patientForm="ngForm" class="needs-validation" novalidate (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col s12 m6 offset-m3">
+      <div class="card-panel">
 
         <!-- Patient LastName -->
         <div class="form-group">
-          <label for="name">Last Name</label>
-          <input type="text" class="form-control" id="family" required pattern="^[a-zA-Z0-9àéèç]{1,25}$"
-            [(ngModel)]="patient.family" name="family" #name="ngModel">
-          <div [hidden]="name.valid || name.pristine" class="card-panel red accent-1">
-            Patient Last Name is required (1-25).
-          </div>
+          <label for="validationCustom01" style="font-size: 20px;">Last Name</label>
+          <input style="font-size: 20px; padding-left: 20px; box-sizing: border-box;" type="text" class="form-control"
+            id="validationCustom01" required pattern="^[a-zA-Z0-9àéèç]{1,25}$" [(ngModel)]="patient.family" name="validationCustom01"
+            #name="ngModel" placeholder="Last Name">
+
         </div>
 
         <!-- Patient Firstname -->
         <div class="form-group">
-          <label for="name">First Name</label>
-          <input type="text" class="form-control" id="firstname" required pattern="^[a-zA-Z0-9àéèç]{1,25}$"
-            [(ngModel)]="patient.given" name="given" #name="ngModel">
-          <div [hidden]="name.valid || name.pristine" class="card-panel red accent-1">
-            Patient First Name is required (1-25).
-          </div>
+          <label for="name" style="font-size: 20px;">First Name</label>
+          <input style="font-size: 20px; padding-left: 20px; box-sizing: border-box;" type="text" class="form-control"
+            id="firstname" required pattern="^[a-zA-Z0-9àéèç]{1,25}$" [(ngModel)]="patient.given" name="given"
+            #name="ngModel" placeholder="First Name">
         </div>
 
         <!-- Patient gender -->
         <div class="form-group">
-          <label for="sex">Gender</label>
-          <input type="text" class="form-control" id="sex" [(ngModel)]="patient.sex" name="sex" #cp="ngModel">
+          <label for="sex" style="font-size: 20px;">Gender</label>
+          <input style="font-size: 20px; padding-left: 20px; box-sizing: border-box;" type="text" class="form-control"
+            id="sex" [(ngModel)]="patient.sex" name="sex" #cp="ngModel" placeholder="Gender" required>
           <div [hidden]="name.valid || name.pristine" class="card-panel red accent-1">
             Patient gender is required.
           </div>
@@ -35,9 +33,9 @@
 
         <!-- Patient address -->
         <div class="form-group">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" [(ngModel)]="patient.address" name="address"
-            #cp="ngModel">
+          <label for="address" style="font-size: 20px;">Address</label>
+          <input style="font-size: 20px; padding-left: 20px; box-sizing: border-box;" type="text" class="form-control"
+            id="address" [(ngModel)]="patient.address" name="address" #cp="ngModel" placeholder="Address" required>
           <div [hidden]="name.valid || name.pristine" class="card-panel red accent-1">
             Patient address is required.
           </div>
@@ -45,28 +43,30 @@
 
         <!-- Patient phone -->
         <div class="form-group">
-          <label for="phone">Phone number</label>
-          <input type="text" class="form-control" id="phone" [(ngModel)]="patient.phone" name="phone" #cp="ngModel">
-          <div [hidden]="name.valid || name.pristine" class="card-panel red accent-1">
+          <label for="phone" style="font-size: 20px;">Phone number</label>
+          <input style="font-size: 20px; padding-left: 20px; box-sizing: border-box;" type="text" class="form-control"
+            id="phone" [(ngModel)]="patient.phone" name="phone" #cp="ngModel" placeholder="Phone" required>
+          <div [hidden]="name.valid || name.pristine" class="card-panel red accent-1" placeholder="Phone">
             Patient phone number is required.
           </div>
         </div>
 
-         <!-- Patient date -->
-         <div *ngIf="isAddForm" class="form-group">
-          <label for="dob">Birthdate</label>
-          <input type="text" class="form-control" id="dob" [(ngModel)]="patient.dob" name="dob" #cp="ngModel">
-          <div [hidden]="name.valid || name.pristine" class="card-panel red accent-1">
+        <!-- Patient date -->
+        <div *ngIf="isAddForm" class="form-group">
+          <label for="dob" style="font-size: 20px; ">Birthdate</label>
+          <input style="font-size: 20px; padding-left: 20px; box-sizing: border-box;" type="text" class="form-control"
+            id="dob" [(ngModel)]="patient.dob" name="dob" #cp="ngModel"  required>
+          <div [hidden]="name.valid || name.pristine" class="card-panel red accent-1" >
             Patient birthdate is required.
           </div>
         </div>
 
         <!-- Submit button -->
-        <div class="divider"></div>
+
         <div class="section center">
-          <a (click)="goToPatientList()" class="waves-effect waves-light btn">
+          <a style="font-size: 15px;" (click)="goToPatientList()" class="waves-effect waves-light btn">
             Back </a>
-          <button type="submit" class="waves-effect waves-light btn" [disabled]="!patientForm.form.valid">
+          <button style="font-size: 15px;" type="submit" class="waves-effect waves-light btn">
             Validate</button>
         </div>
 
@@ -75,3 +75,5 @@
   </div>
 </form>
 <h3 *ngIf="!patient" class="center">No patient found</h3>
+
+<script type="text/javascript" src="./patient-form.component.js"></script>

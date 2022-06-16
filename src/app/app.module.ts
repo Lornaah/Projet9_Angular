@@ -6,12 +6,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PatientModule } from './patient/patient.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PatienthistoryComponent } from './patienthistory/patienthistory.component';
+import { AddNoteComponent } from './note/add-note/add-note.component';
+import { NoteFormComponent } from './note/note-form/note-form.component';
+import { UpdateNoteComponent } from './note/update-note/update-note.component';
+import { GenerateReportComponent } from './note/generate-report/generate-report.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PatienthistoryComponent,
+    AddNoteComponent,
+    NoteFormComponent,
+    UpdateNoteComponent,
+    GenerateReportComponent
   ],
 
   imports: [
@@ -19,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     HttpClientModule,
     PatientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
  
   providers: [],

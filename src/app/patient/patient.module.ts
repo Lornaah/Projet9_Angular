@@ -8,8 +8,16 @@ import { FormsModule } from '@angular/forms';
 import { PatientFormComponent } from './patient-form/patient-form.component';
 import { EditPatientComponent } from './edit-patient/edit-patient.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
+import { PatienthistoryComponent } from '../patienthistory/patienthistory.component';
+import { AddNoteComponent } from '../note/add-note/add-note.component';
+import { UpdateNoteComponent } from '../note/update-note/update-note.component';
+import { GenerateReportComponent } from '../note/generate-report/generate-report.component';
 
 const patientRoutes: Routes = [
+  { path:'patient/:id/patientHistory', component : PatienthistoryComponent},
+  { path:'generateReport/:id', component : GenerateReportComponent},
+  { path:'note/update/:noteId', component : UpdateNoteComponent},
+  { path:'note/add/:id', component : AddNoteComponent},
   { path:'edit/patient/:id', component : EditPatientComponent},
   { path:'patient/add', component : AddPatientComponent},
   { path:'patients', component: ListPatientComponent },

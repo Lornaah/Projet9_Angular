@@ -1,0 +1,43 @@
+<form *ngIf="note" (ngSubmit)="onSubmit(noteform)" #noteform="ngForm">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+        <div class="card-panel" style="max-width:75%; margin:auto; margin-top: 2em;">
+  
+          <!-- Note  -->
+          <div class="form-group" >
+              <label for="note" style="font-size: 25px; " class="active">Note</label>
+              <input style="font-size: 25px; padding-left: 20px; box-sizing: border-box;" type="text" class="form-control" id="family"
+                [(ngModel)]="note.note" #name="ngModel" name="note" placeholder="Enter a Note">
+            <div [hidden]="name.valid && name.pristine" class="card-panel red accent-1">
+              Patient note is required.
+            </div>
+          </div>
+  
+           <!-- Note date -->
+           <div *ngIf="isAddForm" class="form-group" style="margin-top: 1em;">
+            <label for="date" style="font-size: 25px; ">Date</label>
+            <input style="font-size: 25px; padding-left: 20px; box-sizing: border-box;" type="date" class="form-control" id="date" [(ngModel)]="note.date" #date="ngModel" name="date" required>
+            <div [hidden]="date.valid && date.pristine" class="card-panel red accent-1">
+              Note date is required. 
+            </div>
+          </div>
+  
+          <!-- Submit button -->
+          <div class="section center" style="margin-top: 2em;">
+
+            <a (click)="goToPatientHistory()"
+              class="btn-large orange lighten-1 waves-effect waves-light z-depth-2"
+              style="margin-right: 2em; margin-left: 2em;">
+              <strong>Back</strong>
+            </a>
+
+            <button type="submit" class="btn-large lighten-1 waves-effect waves-light z-depth-2" [disabled]="!noteform.form.valid">
+              <strong>Validate</strong>
+            </button>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </form>
+  <h3 *ngIf="!note" class="center">No note found</h3>

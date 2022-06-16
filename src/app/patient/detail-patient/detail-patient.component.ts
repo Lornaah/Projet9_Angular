@@ -37,5 +37,9 @@ export class DetailPatientComponent implements OnInit {
   goToEditPatient(patient: Patient) {
     this.router.navigate(['edit/patient', patient.id]);
   }
+  
+  goToPatientHistory(patient : Patient){
+    this.router.navigate(['patient', patient.id, 'patientHistory']);
+  }
 
 }

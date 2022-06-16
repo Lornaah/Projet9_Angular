@@ -1,0 +1,30 @@
+<div *ngIf="patient">
+
+    <div class="col s12 m6 offset-m3">
+        <h2 class="header center"> Generated Report</h2>
+
+        <h5 class="col m9 s6" style="text-align: center; margin-top: 2em; font-size: 30px;"> Report of the patient
+            <strong> {{ patient.given }} {{ patient.family }} </strong> born the {{ patient.dob | date:"dd/MM/yyyy" }} :
+        </h5>
+
+        <div class="card horizontal hoverable" style="max-width: fit-content; margin:auto; margin-top: 3em;">
+            <div class="card-stacked">
+                <div class="card-content">
+                    <h5 class="col m9 s6" style="text-align: center"> The level of risk that the patient will develop
+                        diabetes is <strong>{{ report }} </strong></h5>
+                </div>
+                <div class="card-action" style="font-size: 18px;">
+
+                    <a (click)="goToPatientHistory(patient)"> <strong>Back</strong></a>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<h4 *ngIf='!patient' class="center">There is no patient here !</h4>

@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-form',
-  templateUrl: './patient-form.component.html',
+  templateUrl: './patient-form.component.html'
 })
+
 export class PatientFormComponent implements OnInit {
   @Input() patient: Patient;
-  types: string[];
   isAddForm: boolean;
 
   constructor(
@@ -22,7 +22,8 @@ export class PatientFormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.isAddForm) {
+    console.log("vers l'infini et au-delà !")
+    /* if (this.isAddForm) {
       this.patientService.addPatient(this.patient)
         .subscribe((patient: Patient) => this.router.navigate(['/patient', patient.id]))
     } else {
@@ -32,7 +33,7 @@ export class PatientFormComponent implements OnInit {
             this.router.navigate(['/patient', this.patient.id]);
           }
         })
-    }
+    } */
   }
 
   goToPatientList() {

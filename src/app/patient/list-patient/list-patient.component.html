@@ -3,22 +3,21 @@
     <div class="row">
 
         <div *ngFor="let patient of patientList" class="col m4 s6">
-            <div (click)="goToPatient(patient)"  patientBorderCard class="card-panel center-align" style="margin-bottom:30px">
-                        <h5>  
-                             First Name : {{ patient.given }} <br/>
-                             Last Name : {{ patient.family}}
-                        </h5>
-         
+            <div (click)="goToPatient(patient)" patientBorderCard class="card-panel center-align"
+                style="margin-bottom:30px">
+                <h5>
+                    First Name : {{ patient.given }} <br />
+                    Last Name : {{ patient.family}}
+                </h5>
+
             </div>
-           
+
         </div>
     </div>
 </div>
-
-<a 
-class="btn-floating btn-large waves-effect waves-light red z-depth-3"
-style="position:fixed; bottom:805px; right: 750px"
-routerLink="/patient/add"
->
-➕
-</a>
+<div class="btn-floating btn-large waves-effect waves-light z-depth-2" style = "margin-left : 1120px; margin-top: -510px;">
+    <a style="color : white; font-size: 3em; display: block; margin-top: -2px;"
+        routerLink="/patient/add">
+        +
+    </a>
+</div>

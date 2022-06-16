@@ -1,0 +1,66 @@
+<div *ngIf="patient" class="row">
+  <div class="col s12 m6 offset-m3">
+    <h2 class="header center"> Patient informations </h2>
+    <div class="card horizontal hoverable">
+      <div class="card-stacked">
+        <div class="card-content">
+
+          <h5 class="col m9 s6">Notes of the patient : <strong>{{ patient.given }} {{ patient.family }} </strong></h5>
+
+          <a class="col m3 s6" (click)="goToAddNoteForm()" class="btn-large waves-effect waves-light z-depth-2">
+            <strong>Add a Note</strong>
+          </a>
+
+          <div style="margin-top:20px" *ngIf="hasNote()">
+
+            <div *ngFor="let eachNote of patientHistory?.note" class="col m12 s6" style="font-size: 18px;">
+              <div>
+                <table class="bordered striped">
+                  <tbody>
+
+                    <tr>
+                      <td style="padding-left : 10px">From : {{ eachNote.date |date:"dd/MM/yyyy" }}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding-left : 30px"> <strong>{{ eachNote.note }} </strong></td>
+                    </tr>
+
+                    <div class="card-action" style="font-size: 16px;">
+                      <a (click)="goToUpdateNote(eachNote)"><strong>Update</strong></a>
+                      <a (click)="deleteNote(eachNote)"><strong>Delete</strong></a>
+                    </div>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="section center" style="margin-top: 2em;">
+
+              <a (click)="goToDetailsPatient(patient)"
+                class="btn-large orange lighten-1 waves-effect waves-light z-depth-2"
+                style="margin-right: 2em; margin-left: 2em;">
+                <strong>Back</strong>
+              </a>
+
+              <a (click)="goToGenerateReport(patient)" class="btn-large lighten-1 waves-effect waves-light z-depth-2 ">
+                <strong>Generate Report</strong>
+              </a>
+            </div>
+
+          </div>
+
+          <div *ngIf='!hasNote()'>
+            <h5 class="center" style="font-size: 35px; margin-top: 1em;"> There is no note</h5>
+
+            <div class="card-action" style="font-size: 18px;">
+              <a (click)="goToDetailsPatient(patient)">
+                <strong>Back</strong>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h4 *ngIf='!patient' class="center">There is no patient here !</h4>
