@@ -1,4 +1,3 @@
-import { MedicalAntedecent } from "../medicalAntecedent/medicalAntecedent";
 import { Note } from "../note/note";
 
 export class PatientHistory {
@@ -7,5 +6,4 @@ export class PatientHistory {
 
     note: Note[];
 
-    medicalAntecedents : MedicalAntedecent[];
 }

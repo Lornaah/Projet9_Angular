@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PatientService } from '../patient.service';
 import { Patient } from '../patient';
 import { Router } from '@angular/router';
+import * as M from "materialize-css";
 
 @Component({
   selector: 'app-patient-form',
@@ -21,9 +22,16 @@ export class PatientFormComponent implements OnInit {
     this.isAddForm = this.router.url.includes('add');
   }
 
+  ngAfterViewInit():void{
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {}); 
+    instances[0].input.setAttribute("style", "font-size: 20px; padding-left: 20px; box-sizing: border-box;");
+    if(!this.isAddForm)
+      instances[0].input.value = this.patient.sex;
+  }
+
   onSubmit() {
-    console.log("vers l'infini et au-delà !")
-    /* if (this.isAddForm) {
+    if (this.isAddForm) {
       this.patientService.addPatient(this.patient)
         .subscribe((patient: Patient) => this.router.navigate(['/patient', patient.id]))
     } else {
@@ -33,7 +41,7 @@ export class PatientFormComponent implements OnInit {
             this.router.navigate(['/patient', this.patient.id]);
           }
         })
-    } */
+    }
   }
 
   goToPatientList() {

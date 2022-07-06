@@ -53,10 +53,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/materialize-css/dist/css/materialize.css"
             ],
             "scripts": [
-              "src/app/patient/patient-form/patient-form.component.js"
+              "src/app/patient/patient-form/patient-form.component.js",
+              "./node_modules/materialize-css/dist/js/materialize.js"
             ]
           },
           "configurations": {

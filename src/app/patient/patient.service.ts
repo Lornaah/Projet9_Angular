@@ -57,7 +57,7 @@ export class PatientService {
   }
 
   private log(response: any) {
-    console.table(response);
+    //console.table(response);
   }
 
   private handleError(error: Error, errorValue: any) {

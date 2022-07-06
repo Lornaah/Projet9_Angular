@@ -1,0 +1,45 @@
+<div class='row'>
+  <div class="col s12 m4 offset-m4">
+    <div class="card hoverable">
+      <div class="card-content center">
+        <span class="card-title" style="font-size: 30px; font-weight: bold;">Welcome ! </span>
+      </div>
+      <form *ngIf="user" #loginForm="ngForm">
+
+        <!-- User Name -->
+        <div>
+          <label for="name" style="font-size: 20px; padding-left: 10px;">Name</label>
+          <input type="text" style="font-size: 20px; padding-left: 20px; box-sizing: border-box;" id="name"
+            [(ngModel)]="user.username" name="username" required>
+        </div>
+
+        <!-- Password -->
+        <div style="margin-top: 15px;">
+          <label for="password" style="font-size: 20px; padding-left: 10px;">Password</label>
+          <input type="password" style="font-size: 20px; padding-left: 20px; box-sizing: border-box;" id="password"
+            [(ngModel)]="user.password" name="password" required>
+        </div>
+      </form>
+      <div *ngIf="error">
+        <p style="color:tomato; text-align:center; font-size: 20px;">There was an error when creating the account.
+          Either one <strong>field is
+            empty</strong> or <strong>username is already taken. </strong></p>
+      </div>
+
+      <!-- SignUp Button -->
+      <div class="card-action center" style="margin-top: 1em;">
+        <a (click)="signUp()" class="btn-large lighten-1 waves-effect waves-light z-depth-2" style="margin-right: 2em; margin-left: 2em;">
+          Sign up
+        </a>
+     
+      <!-- Back Button -->
+      
+        <a (click)="back()" class="btn-large lighten-1 waves-effect waves-light z-depth-2">
+          Back
+        </a>
+      </div>
+
+
+    </div>
+  </div>
+</div>

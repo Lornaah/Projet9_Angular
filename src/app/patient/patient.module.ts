@@ -12,16 +12,17 @@ import { PatienthistoryComponent } from '../patienthistory/patienthistory.compon
 import { AddNoteComponent } from '../note/add-note/add-note.component';
 import { UpdateNoteComponent } from '../note/update-note/update-note.component';
 import { GenerateReportComponent } from '../note/generate-report/generate-report.component';
+import { AuthGuard } from '../auth.guard';
 
 const patientRoutes: Routes = [
-  { path:'patient/:id/patientHistory', component : PatienthistoryComponent},
-  { path:'generateReport/:id', component : GenerateReportComponent},
-  { path:'note/update/:noteId', component : UpdateNoteComponent},
-  { path:'note/add/:id', component : AddNoteComponent},
-  { path:'edit/patient/:id', component : EditPatientComponent},
-  { path:'patient/add', component : AddPatientComponent},
-  { path:'patients', component: ListPatientComponent },
-  { path:'patient/:id', component : DetailPatientComponent },
+  { path:'patient/:id/patientHistory', component : PatienthistoryComponent, canActivate: [AuthGuard]},
+  { path:'generateReport/:id', component : GenerateReportComponent, canActivate: [AuthGuard]},
+  { path:'note/update/:noteId', component : UpdateNoteComponent, canActivate: [AuthGuard]},
+  { path:'note/add/:id', component : AddNoteComponent, canActivate: [AuthGuard]},
+  { path:'edit/patient/:id', component : EditPatientComponent, canActivate: [AuthGuard]},
+  { path:'patient/add', component : AddPatientComponent, canActivate: [AuthGuard]},
+  { path:'patients', component: ListPatientComponent, canActivate: [AuthGuard] },
+  { path:'patient/:id', component : DetailPatientComponent , canActivate: [AuthGuard]},
 ];
 
 @NgModule({

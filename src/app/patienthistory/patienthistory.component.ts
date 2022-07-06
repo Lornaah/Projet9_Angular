@@ -33,14 +33,13 @@ export class PatienthistoryComponent implements OnInit {
 
     if (patientId) {
       this.patientService.getPatientById(+patientId)
-        .subscribe(patient => this.patient = patient);
-      this.patientHistoryService.getPatientHistoryById(+patientId)
-      .subscribe(patientHistory =>{
-        if(patientHistory){
-        this.patientHistory = patientHistory;
-        this.getNote(patientHistory, patientId);
-        }
-      });     
+        .subscribe(patient => {this.patient = patient
+          if(patient){
+            this.patientHistory = new PatientHistory;
+            this.patientHistory.id = this.patient?.id ?? 0;
+            this.getNote(this.patientHistory, patientId);
+            }
+        });
     }
   }
 

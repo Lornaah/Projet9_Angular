@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { NgForm, NgModel } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { of } from 'rxjs';
 import { PatienthistoryService } from 'src/app/patienthistory/patienthistory.service';
 import { Note } from '../note';
 

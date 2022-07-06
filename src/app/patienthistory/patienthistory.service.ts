@@ -68,22 +68,15 @@ export class PatienthistoryService {
     );
   }
 
-  generateDiabetesReport(patientId: number, occurences: number): Observable<string> {
+  generateDiabetesReport(patientId: number): Observable<string> {
     const options: Object = {
       responseType: 'text'
     }
-    return this.http.get<string>(`http://localhost:8080/generateReport?patId=${patientId}&occurrences=${occurences}`, options).pipe(
+    return this.http.get<string>(`http://localhost:8082/generateReport?patId=${patientId}`, options).pipe(
           tap((response: any) => this.log("generateReport " + response)),
           catchError((error: Error) => this.handleError(error, null))
         );
   }  
-
-  getOccurrencesByPatId(patientId: number): Observable<number> {
-    return this.http.get<number>(`http://localhost:8081/getOccurrencesByPatId?patId=${patientId}`).pipe(
-      tap((response: any) => this.log(response)),
-      catchError((error: Error) => this.handleError(error, null))
-    );
-  }
 
 
   private log(response: any) {

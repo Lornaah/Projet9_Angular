@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 import { Patient } from '../patient';
 import { PatientService } from '../patient.service';
+
 
 @Component({
   selector: 'app-list-patient',
@@ -13,7 +15,9 @@ export class ListPatientComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private authService : AuthService
+
     ){}
 
     ngOnInit(){
@@ -23,6 +27,10 @@ export class ListPatientComponent implements OnInit {
 
   goToPatient(patient: Patient){
     this.router.navigate(['/patient', patient.id]);
+  }
+
+  logout(){
+    this.authService.doLogout();
   }
 
 
