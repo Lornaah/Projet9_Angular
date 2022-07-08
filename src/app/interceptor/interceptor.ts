@@ -1,11 +1,12 @@
 import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable, Injector } from "@angular/core";
 import { catchError, EMPTY, lastValueFrom, Observable, tap } from "rxjs";
+import { environment } from "src/environments/environment";
 import { AuthService } from "../auth.service";
 
 @Injectable()
 export class Interceptor implements HttpInterceptor{
-    verifyUrl:string = 'http://localhost:8083/verify';
+    verifyUrl:string = environment.loginUrl + '/verify';
 
     constructor(
         private authService:AuthService,

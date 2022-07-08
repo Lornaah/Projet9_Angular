@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { TestScheduler } from 'rxjs/testing';
+import { environment } from 'src/environments/environment';
 import { Note } from '../note/note';
 import { PatientHistory } from './patienthistory';
 
@@ -17,7 +18,7 @@ export class PatienthistoryService {
   }
 
   getPatientHistoryById(id: number): Observable<PatientHistory | undefined> {
-    return this.http.get<PatientHistory>(`http://localhost:8080/patient/${id}/patientHistory/get`).pipe(
+    return this.http.get<PatientHistory>(environment.mediscreenUrl + `/patient/${id}/patientHistory/get`).pipe(
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, undefined))
 
@@ -25,14 +26,14 @@ export class PatienthistoryService {
   }
 
   getNoteByNoteId(noteId: string): Observable<Note> {
-    return this.http.get<Note>(`http://localhost:8081/patHistory?noteId=${noteId}`).pipe(
+    return this.http.get<Note>(environment.noteUrl + `/patHistory?noteId=${noteId}`).pipe(
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, undefined))
     );
   }
 
   getPatientNote(patientId: number): Observable<Note[]> {
-    return this.http.get<Note>(`http://localhost:8081/patHistories?patId=${patientId}`).pipe(
+    return this.http.get<Note>(environment.noteUrl + `/patHistories?patId=${patientId}`).pipe(
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, undefined))
     );
@@ -44,7 +45,7 @@ export class PatienthistoryService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    return this.http.post<Note>(`http://localhost:8081/patHistory/add`, note, httpOptions).pipe(
+    return this.http.post<Note>(environment.noteUrl + `/patHistory/add`, note, httpOptions).pipe(
       tap((response: any) => this.log(response)),
       catchError((error: Error) => this.handleError(error, null))
     );
@@ -55,14 +56,14 @@ export class PatienthistoryService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
-    return this.http.put(`http://localhost:8081/patHistory/update`, note, httpOptions).pipe(
+    return this.http.put(environment.noteUrl + `/patHistory/update`, note, httpOptions).pipe(
       tap((response: any) => this.log(response)),
       catchError((error: Error) => this.handleError(error, null)),
     );
   }
 
   deleteNoteById(noteId: string): Observable<null> {
-    return this.http.delete(`http://localhost:8081/patHistory/delete?id=${noteId}`).pipe(
+    return this.http.delete(environment.noteUrl + `/patHistory/delete?id=${noteId}`).pipe(
       tap((response: any) => this.log(response)),
       catchError((error: Error) => this.handleError(error, null))
     );
@@ -72,7 +73,7 @@ export class PatienthistoryService {
     const options: Object = {
       responseType: 'text'
     }
-    return this.http.get<string>(`http://localhost:8082/generateReport?patId=${patientId}`, options).pipe(
+    return this.http.get<string>(environment.reportUrl + `/assess?patId=${patientId}`, options).pipe(
           tap((response: any) => this.log("generateReport " + response)),
           catchError((error: Error) => this.handleError(error, null))
         );

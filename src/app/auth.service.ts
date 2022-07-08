@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, delay, Observable, of, tap, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from './login/user';
 
 @Injectable({
@@ -9,9 +10,8 @@ import { User } from './login/user';
 })
 
 export class AuthService {
-  endpoint: string = 'http://localhost:8083'
-  loginUrl:string = this.endpoint + '/login'
-  signupUrl:string = this.endpoint + '/user/validate'
+  loginUrl:string = environment.loginUrl + '/login'
+  signupUrl:string = environment.loginUrl + '/user/validate'
   message: string
 
   constructor(
@@ -38,7 +38,6 @@ export class AuthService {
   }
 
   signUp(user: User): Observable<any> {
-    let api = `${this.endpoint}/user/validate`;
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };

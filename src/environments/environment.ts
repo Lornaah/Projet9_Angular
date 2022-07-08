@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  mediscreenUrl: "http://localhost:8080",
+  noteUrl: "http://localhost:8081",
+  reportUrl: "http://localhost:8082",
+  loginUrl: "http://localhost:8083"
 };
 
 /*
