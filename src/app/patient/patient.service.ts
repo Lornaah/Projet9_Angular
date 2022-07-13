@@ -15,7 +15,6 @@ export class PatientService {
   }
 
   getPatientList(): Observable<Patient[]> {
-    console.log(environment.mediscreenUrl);
     return this.http.get<Patient[]>(environment.mediscreenUrl + '/patients').pipe(
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, []))

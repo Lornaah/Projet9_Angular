@@ -43,9 +43,7 @@ export class NoteFormComponent implements OnInit {
   }
 
  goToPatientHistory(){
-   console.log(this.note);
     this.router.navigate(['/patient', this.note.patientId, 'patientHistory']);
-    
   }
 
 }
